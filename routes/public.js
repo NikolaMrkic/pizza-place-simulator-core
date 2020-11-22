@@ -6,7 +6,6 @@ const publicController = require('../controllers/public');
 
 const router = express.Router();
 
-router.get('/test', publicController.pizzaIngredients);
-
+router.get('/', publicController.pizzaIngredients);
 
 module.exports = router;
