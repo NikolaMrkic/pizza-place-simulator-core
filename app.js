@@ -13,13 +13,13 @@ const publicRoutes = require('./routes/public');
 //     next();
 // })
 
-app.use((req, res, next) => {
-    console.log(ingredients);
-    console.log("usao u kontroler");
-    res.status(200).json({
-        ingredients: ingredients
-    })
-});
+// app.use((req, res, next) => {
+//     console.log(ingredients);
+//     console.log("usao u kontroler");
+//     res.status(200).json({
+//         ingredients: ingredients
+//     })
+// });
 
 app.use(publicRoutes);
 
