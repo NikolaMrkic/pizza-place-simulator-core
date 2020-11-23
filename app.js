@@ -1,30 +1,37 @@
 
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const mongoConnect = require('./util/database').mongoConnect;
 
+const ingredientsRoutes = require('./routes/public/ingredients');
+const orderRoutes = require('./routes/public/order');
 const ingredients = require('./pizzaHelper')
+
+const cors = require('cors')
 
 const app = express();
 
-const publicRoutes = require('./routes/public');
+app.set('view engine', 'ejs');
 
-// app.use((req, res, next) => {
-//     next();
-// })
+app.set('views', 'views')
 
-// app.use((req, res, next) => {
-//     console.log(ingredients);
-//     console.log("usao u kontroler");
-//     res.status(200).json({
-//         ingredients: ingredients
-//     })
-// });
 
-app.use(publicRoutes);
+app.use((req, res, next) => {
+    next();
+})
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+
+
+app.use(ingredientsRoutes);
+app.use(orderRoutes);
 
 mongoConnect(client => {
-    app.listen(3000);
+    app.listen(3001);
 })
 
 
