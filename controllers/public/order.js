@@ -15,7 +15,7 @@ exports.purchaseOrder = (req, res, next) => {
         .save()
         .then(orders => {
             // console.log('res kontroler', res);
-            res.status(201).json(order)
+            res.status(201).json({ order })
             console.log('order created');
         })
         .catch(err => {
@@ -24,9 +24,10 @@ exports.purchaseOrder = (req, res, next) => {
 };
 
 exports.getAllOrders = (req, res, next) => {
+    console.log("orders getAll");
     Order.fetchAll()
         .then(orders => {
-            res.status(201).json({
+            res.status(200).json({
                 orders: orders
             });
         })
