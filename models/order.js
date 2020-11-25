@@ -7,7 +7,7 @@ class Order {
         this.address = address;
         this.phone = phone;
         this.price = price;
-        this.thime = time;
+        this.time = time;
         this.name = name;
     }
 
